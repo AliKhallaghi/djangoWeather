@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+      .low {background-color: #299501;}
+      .moderate {background-color: #F7E401;}
+      .high {background-color: #F95901;}
+      .veryhigh {background-color: #D90011;}
+      .extreme {background-color: #6C49CB;}
+    </style>
   </head>
   <body>
 
@@ -25,9 +32,10 @@
       </li>
 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+    <form action="{% url 'index' %}" class="form-inline my-2 my-lg-0" method="POST">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" name="citysearch" placeholder="Enter City name" aria-label="Search">
+    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Lookup</button>
     </form>
   </div>
 </nav>

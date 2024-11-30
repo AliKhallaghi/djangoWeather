@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello, world!</h1>
+
+<br/>
+
+{% if citysearch %}
+	{{ citysearch }}
+{% endif %}
+
+{% if api %}
+	{% if api == "Error"%}
+		Error, please try again.
+	{% else %}
+	<div class="jumbotron {{color_pick}}">
+	  <h1 class="display-4">{{api.resolvedAddress}} <br/>Temperature: {{api.days.0.temp}}°C</h1> <br/>
+	  <p class="lead">Date : {{api.days.0.datetime}}</p>
+	  <p>Min Temp: {{api.days.0.tempmin}}°C | Max Temp: {{api.days.0.tempmax}}°C</p>
+	  <p>Condictions : {{api.days.0.conditions}}</p>
+	  <hr class="my-4">
+	  <p>UV : {{api.days.0.uvindex}}</p>
+
+	  <p>{{ color_description }}</p>
+
+	</div>
+	{% endif %}	
+
+{% endif %}
+
+
 {% endblock %}
